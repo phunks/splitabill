@@ -34,18 +34,8 @@ class MainTableViewController: UITableViewController {
     // edit-> Nullの場合にエントリ削除？
     // 払った金額の入力時、保存する際に強制的に-を付ける
     
-    //var resultData = [String]()
-    
-    //var tableData = [String]()
-    //var tableData = ["Aさん", "Bさん", "Cさん", "Dさん", "Eさん", "Fさん"]
-    //var detailData = [Int]
-    //var detailData = ["1079", "949", "811", "909", "846", "736"]
     var tableData = ["aaaa", "bbbb", "cccc", "dddd", "eeee"]
     var detailData = ["-2800", "-12310", "-3290", "-990", "0"]
-    
-    //@IBAction func unwindHome(_ segue: UIStoryboardSegue) {
-    //     this is intentionally blank
-    //}
     
     @IBAction func saveToMainViewController (segue:UIStoryboardSegue) {
         
@@ -65,25 +55,8 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // BarButton with your own image
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        // BarButton with system image
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "結果", style: .plain, target: self, action: #selector(MainTableViewController.addTapped))
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-
     }
 
-    //@IBAction @objc func addTapped(segue:UIStoryboardSegue) {
-    //@IBAction func addTapped(segue:UIStoryboardSegue) {
     func addTapped() -> (Array<String>) {
         var resultData = [String]()
         
@@ -145,22 +118,11 @@ class MainTableViewController: UITableViewController {
             }
         }
         
-        //print("支出合計: \(Swift.abs(sumVal).JPYString)、 一人あたり: \(Swift.abs(sumVal / mcnt).JPYString)、 端数: \((sumVal % mcnt).JPYString)")
         resultData.append("支出合計: \(Swift.abs(sumVal).JPYString)、 一人あたり: \(Swift.abs(sumVal / mcnt).JPYString)、 端数: \((sumVal % mcnt).JPYString)")
         
         for s in member {
-            //print(s.name, String(format: "%d", s.pay), String(format: "%d", s.debt), s.log)
-            //print(s.name, s.pay.JPYString, s.debt.JPYString, s.log)
-            
-            //print(s.name, s.pay.JPYString, terminator: "")
-            //s.log.forEach { print(" |", $0, terminator: "") }
-            //print()
-            
             resultData.append(s.name + " " + s.pay.JPYString + " | " + s.log.joined(separator: " |"))
         }
-        
-        //let nextPage = ResultViewController()
-        //self.navigationController?.pushViewController(nextPage, animated: true)
         return resultData
     }
 
@@ -170,24 +132,17 @@ class MainTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    //override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    //override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return tableData.count
     }
 
-    
-    //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as UITableViewCell
 
         // Configure the cell...

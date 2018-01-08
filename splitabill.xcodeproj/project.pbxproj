@@ -13,6 +13,7 @@
 		05979C9C1BC1872D00F5EA5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05979C9A1BC1872D00F5EA5F /* LaunchScreen.storyboard */; };
 		05979CA41BC1898C00F5EA5F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05979CA31BC1898C00F5EA5F /* MainTableViewController.swift */; };
 		05979CA61BC19BC700F5EA5F /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05979CA51BC19BC700F5EA5F /* DetailTableViewController.swift */; };
+		86169A672003A92300CA2A08 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86169A662003A92300CA2A08 /* RoundButton.swift */; };
 		86CEFAA82000C2FF0075912D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CEFAA72000C2FF0075912D /* Util.swift */; };
 		86CEFAAA2000D4720075912D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CEFAA92000D4720075912D /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		05979C9D1BC1872D00F5EA5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05979CA31BC1898C00F5EA5F /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		05979CA51BC19BC700F5EA5F /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		86169A662003A92300CA2A08 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		86CEFAA72000C2FF0075912D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		86CEFAA92000D4720075912D /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 				86CEFAA72000C2FF0075912D /* Util.swift */,
 				05979CA51BC19BC700F5EA5F /* DetailTableViewController.swift */,
 				86CEFAA92000D4720075912D /* ResultViewController.swift */,
+				86169A662003A92300CA2A08 /* RoundButton.swift */,
 				05979C951BC1872D00F5EA5F /* Main.storyboard */,
 				05979C981BC1872D00F5EA5F /* Assets.xcassets */,
 				05979C9A1BC1872D00F5EA5F /* LaunchScreen.storyboard */,
@@ -89,7 +92,7 @@
 			dependencies = (
 			);
 			name = splitabill;
-			productName = "splitabill";
+			productName = splitabill;
 			productReference = 05979C8E1BC1872D00F5EA5F /* splitabill.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86169A672003A92300CA2A08 /* RoundButton.swift in Sources */,
 				86CEFAAA2000D4720075912D /* ResultViewController.swift in Sources */,
 				05979CA61BC19BC700F5EA5F /* DetailTableViewController.swift in Sources */,
 				86CEFAA82000C2FF0075912D /* Util.swift in Sources */,
@@ -262,7 +266,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WBDY63TE28;
-				INFOPLIST_FILE = "splitabill/Info.plist";
+				INFOPLIST_FILE = splitabill/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pnk.editdatademo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

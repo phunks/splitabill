@@ -197,6 +197,8 @@ class DetailTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             dataString = editModelTextField.text
+            // 少数切り捨て round(52.376, toNearest: 1)
+            // 桁数溢れ対策も兼ねて小数点以下をテキストで削る方が良さげ
             priceString = String(abs(Int(priceTextField.text!)!) * -1)
         }
         // Get the new view controller using [segue destinationViewController].

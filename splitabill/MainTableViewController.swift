@@ -61,12 +61,13 @@ class MainTableViewController: UITableViewController {
         var resultData = [String]()
         
         var member = [Member]()
+        
         var twoDimArray: [[String]] = [ tableData, detailData ]
         
         for x in 0 ..< tableData.count {
             member.append(Member(name:twoDimArray[0][x],pay:Int(twoDimArray[1][x])!,debt:0,log:[]))
         }
-        
+
         member.sort(by: {$0.pay < $1.pay})
         
         var sumVal = 0

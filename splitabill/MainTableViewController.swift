@@ -32,7 +32,7 @@ class MainTableViewController: UITableViewController {
     // ・重複チェック
     // ・Nullチェック
     // edit-> Nullの場合にエントリ削除？
-    // 払った金額の入力時、保存する際に強制的に-を付ける
+    // x払った金額の入力時、保存する際に強制的に-を付ける
     
     var tableData = ["aaaa", "bbbb", "cccc", "dddd", "eeee"]
     var detailData = ["-2800", "-12310", "-3290", "-990", "0"]
@@ -45,16 +45,19 @@ class MainTableViewController: UITableViewController {
         let changedPrice = detailViewController.priceString
         let index = detailViewController.index
         
-        tableData[index!] = editedData!
-        detailData[index!] = changedPrice!
-        
+        if index != nil {
+            tableData[index!] = editedData!
+            detailData[index!] = changedPrice!
+        } else {
+            tableData.append(editedData!)
+            detailData.append(changedPrice!)
+        }
         tableView.reloadData()
     }
 
     
     override func viewDidLoad(){
         super.viewDidLoad()
-
     }
 
     func addTapped() -> (Array<String>) {
@@ -197,12 +200,10 @@ class MainTableViewController: UITableViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "edit" {
             
             let path = tableView.indexPathForSelectedRow
-            //let destination = segue.destinationViewController as! DetailTableViewController
             let detailViewController = segue.destination as! DetailTableViewController
             detailViewController.index = path?.row
             detailViewController.data = tableData
@@ -213,7 +214,12 @@ class MainTableViewController: UITableViewController {
             
             resultViewController.resultData = addTapped()
         
+        } else if segue.identifier == "add" {
+            let detailViewController = segue.destination as! DetailTableViewController
+            detailViewController.data = tableData
+            detailViewController.price = detailData
         }
+        
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }

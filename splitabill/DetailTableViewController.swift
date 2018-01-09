@@ -102,12 +102,16 @@ class DetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let item = data[index!]
-        editModelTextField.text = item
-        
-        let amount = price[index!]
-        priceTextField.text = amount
-
+        if index != nil {
+            let item = data[index!]
+            editModelTextField.text = item
+            
+            let amount = price[index!]
+            priceTextField.text = amount
+        } else {
+            editModelTextField.text = ""
+            priceTextField.text = "0"
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -120,7 +124,6 @@ class DetailTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
             editModelTextField.becomeFirstResponder()
@@ -128,7 +131,6 @@ class DetailTableViewController: UITableViewController {
         else if indexPath.section == 1 && indexPath.row == 0 {
             priceTextField.becomeFirstResponder()
         }
-        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -193,7 +195,6 @@ class DetailTableViewController: UITableViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             dataString = editModelTextField.text

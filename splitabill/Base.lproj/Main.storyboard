@@ -57,7 +57,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="割り勘" id="rkc-rq-Nh5">
-                        <barButtonItem key="leftBarButtonItem" title="追加" id="gTs-rx-rFe" userLabel="add"/>
+                        <barButtonItem key="leftBarButtonItem" title="追加" id="gTs-rx-rFe" userLabel="add">
+                            <connections>
+                                <segue destination="cfR-wC-pCf" kind="show" identifier="add" id="fHN-ew-nUV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="結果" id="tiL-ZA-9Ua" userLabel="result">
                             <connections>
                                 <segue destination="ftE-bl-UV4" kind="show" identifier="result" id="wy0-lB-jek"/>
@@ -536,4 +540,7 @@
             <point key="canvasLocation" x="321" y="347"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PfA-Z2-LS5"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -102,8 +102,8 @@ class MainTableViewController: UITableViewController {
                     k = k + 1
                 }
             } else if member[k].debt != 0 && member[k].debt + member[m].debt < 0 {
-                member[m].log.append(Swift.abs(member[m].debt).JPYString + "->" + member[k].name)
-                member[k].log.append(member[k].name + "(" + Swift.abs(member[k].debt).JPYString + ")")
+                member[m].log.append(Swift.abs(member[k].debt).JPYString + "->" + member[k].name)
+                member[k].log.append(member[m].name + "(" + Swift.abs(member[k].debt).JPYString + ")")
                 
                 member[m].debt = member[k].debt + member[m].debt
                 if member[m].debt <= 0 {

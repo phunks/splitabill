@@ -24,17 +24,13 @@ class Member {
 
 class MainTableViewController: UITableViewController {
 
-
-    // 参加者を追加するボタンを追加
-    // スワイプ削除追加
     // バリデート追加
     // ・数値チェック
     // ・重複チェック
     // ・Nullチェック
     // edit-> Nullの場合にエントリ削除？
-    // x払った金額の入力時、保存する際に強制的に-を付ける
     
-    var tableData = ["aaaa", "bbbb", "cccc", "dddd", "eeee"]
+    var tableData = ["Aさん", "Bさん", "Cさん", "Dさん", "Eさん"]
     var detailData = ["-2800", "-12310", "-3290", "-990", "0"]
     
     @IBAction func saveToMainViewController (segue:UIStoryboardSegue) {
@@ -62,9 +58,7 @@ class MainTableViewController: UITableViewController {
 
     func addTapped() -> (Array<String>) {
         var resultData = [String]()
-        
         var member = [Member]()
-        
         var twoDimArray: [[String]] = [ tableData, detailData ]
         
         for x in 0 ..< tableData.count {
@@ -72,7 +66,6 @@ class MainTableViewController: UITableViewController {
         }
 
         member.sort(by: {$0.pay < $1.pay})
-        
         var sumVal = 0
         
         for s in member {
@@ -181,22 +174,6 @@ class MainTableViewController: UITableViewController {
         }    
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -6,6 +6,7 @@
 //  Copyright © 2015 Apoorv Mote. All rights reserved.
 //
 
+
 import UIKit
 
 enum Operation:String {
@@ -17,10 +18,9 @@ enum Operation:String {
 }
 
 
-class DetailTableViewController: UITableViewController {
-
+class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
+    
     @IBOutlet weak var editModelTextField: UITextField!
-    //@IBOutlet weak var priceTextField: UITextField!
     
     var data:[String]!
     var price:[String]!
@@ -101,27 +101,49 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        editModelTextField.delegate = self
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(DetailTableViewController.didSwipe(_:)))
+        rightSwipe.direction = .right
+        view.addGestureRecognizer(rightSwipe)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(DetailTableViewController.didSwipe(_:)))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
         
         if index != nil {
-            let item = data[index!]
-            editModelTextField.text = item
-            
+            let item   = data[index!]
             let amount = price[index!]
-            priceTextField.text = amount
+            editModelTextField.text = item
+            priceTextField.text     = amount.replacingOccurrences(of: "-", with: "")
+            runningNumber = priceTextField.text!
         } else {
             editModelTextField.text = ""
-            priceTextField.text = "0"
+            priceTextField.text     = "0"
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    @objc func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        
+        if sender.direction == .right {
+            print("Right")
+        }
+        else if sender.direction == .left {
+            print("Left")
+            priceTextField.becomeFirstResponder()
+            //let price = priceTextField.text
+            //priceTextField.text = price?.prefix(through: str((price?.count)! - 1))
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ editModelTextField: UITextField) -> Bool {
+        editModelTextField.resignFirstResponder()
+        return true
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -129,81 +151,21 @@ class DetailTableViewController: UITableViewController {
             editModelTextField.becomeFirstResponder()
         }
         else if indexPath.section == 1 && indexPath.row == 0 {
+            editModelTextField.resignFirstResponder()
             priceTextField.becomeFirstResponder()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    /*
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             dataString = editModelTextField.text
-            // 少数切り捨て round(52.376, toNearest: 1)
-            // 桁数溢れ対策も兼ねて小数点以下をテキストで削る方が良さげ
-            priceString = String(abs(Int(priceTextField.text!)!) * -1)
+            let txt = priceTextField.text
+            let regex = try! NSRegularExpression(pattern: "\\..*", options: NSRegularExpression.Options.caseInsensitive)
+            let range = NSMakeRange(0, (txt?.count)!)
+            let modString = regex.stringByReplacingMatches(in: txt!, options: [], range: range, withTemplate: "")
+            priceString = String(abs(Int(modString)!) * -1)
         }
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
 
 }

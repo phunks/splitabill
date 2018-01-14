@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -85,16 +86,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-UC-hoB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-UC-hoB">
                                 <rect key="frame" x="16" y="64" width="343" height="583"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZNh-UC-hoB" firstAttribute="leading" secondItem="8aa-hG-Ixp" secondAttribute="leadingMargin" id="ZQe-Bj-r4Z"/>
+                            <constraint firstItem="ZNh-UC-hoB" firstAttribute="top" secondItem="yYs-oy-N9t" secondAttribute="bottom" id="dI7-AA-77a"/>
+                            <constraint firstItem="ZNh-UC-hoB" firstAttribute="trailing" secondItem="8aa-hG-Ixp" secondAttribute="trailingMargin" id="dmF-jZ-Nv2"/>
+                            <constraint firstItem="lJs-Jj-MuH" firstAttribute="top" secondItem="ZNh-UC-hoB" secondAttribute="bottom" constant="20" id="htw-xM-xvP"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ResultTextField" destination="ZNh-UC-hoB" id="sJa-oQ-5ml"/>
@@ -466,13 +473,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R5U-bY-Y6x">
-                                                    <rect key="frame" x="16" y="0.0" width="576" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R5U-bY-Y6x">
+                                                    <rect key="frame" x="16" y="0.0" width="359" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R5U-bY-Y6x" firstAttribute="leading" secondItem="GSM-KX-G7K" secondAttribute="leading" constant="16" id="6Cw-xx-EaI"/>
+                                                <constraint firstItem="R5U-bY-Y6x" firstAttribute="leading" secondItem="GSM-KX-G7K" secondAttribute="leading" constant="16" id="BMN-JE-JHg"/>
+                                                <constraint firstAttribute="trailing" secondItem="R5U-bY-Y6x" secondAttribute="trailing" id="NEr-tc-egg"/>
+                                                <constraint firstItem="R5U-bY-Y6x" firstAttribute="centerY" secondItem="GSM-KX-G7K" secondAttribute="centerY" id="ppg-hf-X6Y"/>
+                                                <constraint firstItem="R5U-bY-Y6x" firstAttribute="top" secondItem="GSM-KX-G7K" secondAttribute="top" id="vJD-Og-bmn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
@@ -487,15 +500,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgY-FA-YcD" userLabel="priceTextField">
-                                                    <rect key="frame" x="0.0" y="-6" width="375" height="65"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgY-FA-YcD" userLabel="priceTextField">
+                                                    <rect key="frame" x="0.0" y="-6" width="354" height="65"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="33"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HgY-FA-YcD" firstAttribute="top" secondItem="CeM-9H-7Qp" secondAttribute="topMargin" constant="-17" id="3Gu-ib-EKQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="HgY-FA-YcD" secondAttribute="trailing" id="MKJ-0s-pTY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HgY-FA-YcD" secondAttribute="bottom" constant="-26" id="UmK-Zm-SjU"/>
+                                                <constraint firstItem="HgY-FA-YcD" firstAttribute="leading" secondItem="CeM-9H-7Qp" secondAttribute="leading" id="eo5-QY-1Ue"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

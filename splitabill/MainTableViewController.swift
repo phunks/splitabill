@@ -30,12 +30,33 @@ class MainTableViewController: UITableViewController {
     // ・Nullチェック
     // edit-> Nullの場合にエントリ削除？
     
-    var tableData = ["Aさん", "Bさん", "Cさん", "Dさん", "Eさん"]
-    var detailData = ["-2800", "-12310", "-3290", "-990", "0"]
+    var tableData = [String]()
+    var detailData = [String]()
+
     
+    // 保存用インスタンス
+    let userDefaults = UserDefaults.standard
+    let defaultsKey:String = "UserDefaultKey"
+
+    // 履歴を保存する
+    func saveHistory(result: [[String]]) {
+        let defaults = UserDefaults.standard
+        defaults.set(result, forKey: defaultsKey)
+        defaults.synchronize()
+    }
+    
+    // 履歴を取得する
+    func readHistory() -> [[String]]  {
+        let defaults = UserDefaults.standard
+        if let hist:[[String]] = defaults.object(forKey: defaultsKey) as? [[String]] {
+            return hist
+        } else {
+            return [["Aさん", "Bさん", "Cさん", "Dさん", "Eさん"],
+                    ["-2800", "-12310", "-3290", "-990", "0"]]
+        }
+    }
+
     @IBAction func saveToMainViewController (segue:UIStoryboardSegue) {
-        
-        //let detailViewController = segue.sourceViewController as! DetailTableViewController
         let detailViewController = segue.source as! DetailTableViewController
         let editedData = detailViewController.dataString
         let changedPrice = detailViewController.priceString
@@ -48,12 +69,20 @@ class MainTableViewController: UITableViewController {
             tableData.append(editedData!)
             detailData.append(changedPrice!)
         }
+        saveHistory(result: [ tableData, detailData ])
         tableView.reloadData()
     }
 
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        if tableData.count == 0 {
+            tableData  = readHistory()[0]
+            detailData = readHistory()[1]
+        } else {
+            saveHistory(result: [ tableData, detailData ])
+        }
     }
 
     func addTapped() -> (Array<String>) {
@@ -145,8 +174,8 @@ class MainTableViewController: UITableViewController {
         // Configure the cell...
         
         cell.textLabel?.text = tableData[indexPath.row]
-        cell.detailTextLabel?.text = detailData[indexPath.row]
-
+        cell.detailTextLabel?.text = Int(detailData[indexPath.row])?.JPYString
+        
         return cell
     }
     
@@ -168,6 +197,7 @@ class MainTableViewController: UITableViewController {
             // Delete the row from the data source
             tableData.remove(at: indexPath.row)
             detailData.remove(at: indexPath.row)
+            saveHistory(result: [ tableData, detailData ])
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -188,9 +218,10 @@ class MainTableViewController: UITableViewController {
             
         } else if segue.identifier == "result" {
             let resultViewController = segue.destination as! ResultViewController
+            if tableData.count != 0 {
+                resultViewController.resultData = addTapped()
+            }
             
-            resultViewController.resultData = addTapped()
-        
         } else if segue.identifier == "add" {
             let detailViewController = segue.destination as! DetailTableViewController
             detailViewController.data = tableData

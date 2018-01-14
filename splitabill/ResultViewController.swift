@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var ResultTextField: UITextView!
     
@@ -23,12 +23,20 @@ class ResultViewController: UIViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        ResultTextField.delegate = self
         ResultTextField.text = resultData?.joined(separator: "\n\n")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textViewShouldBeginEditing(_ ResultTextField: UITextView) -> Bool {
+        //カーソルは表示し、キーボードのみ非表示
+        ResultTextField.inputView = UIView()
+        //キーボードとカーソルを非表示にする場合はfalseを返す
+        return true
     }
     
 

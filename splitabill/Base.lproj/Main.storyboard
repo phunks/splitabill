@@ -71,6 +71,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5Y-rH-Ecp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="2nX-YU-fN6"/>
             </objects>
             <point key="canvasLocation" x="1068" y="347"/>
         </scene>
@@ -136,7 +137,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="OPl-e3-Rc8"/>
                                                         <constraint firstAttribute="height" constant="80" id="xKn-no-bN4"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="7">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -154,7 +155,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="THR-VE-1Pu"/>
                                                         <constraint firstAttribute="height" constant="80" id="n3y-av-uAa"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="8">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -172,9 +173,9 @@
                                                         <constraint firstAttribute="height" constant="80" id="GHl-p9-C5o"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="uTH-cG-OdA"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="9">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
@@ -190,7 +191,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="AAH-3Y-KqB"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="OYq-zM-soh"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                                     <state key="normal" title="÷">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -217,7 +218,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="OW3-4g-z7b"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="qZe-Ly-a2J"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="4">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -235,7 +236,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="33s-6c-MYs"/>
                                                         <constraint firstAttribute="height" constant="80" id="tmK-OE-8MK"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="5">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -253,7 +254,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="E19-Qt-3Na"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="GTS-tG-kSg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="6">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -271,7 +272,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="A8G-lO-Ba8"/>
                                                         <constraint firstAttribute="height" constant="80" id="r4q-Jv-9az"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                                     <state key="normal" title="×">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -298,7 +299,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Ik5-7y-KJw"/>
                                                         <constraint firstAttribute="height" constant="80" id="iaw-k0-ePt"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="1">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -316,7 +317,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="hoG-Aa-uGT"/>
                                                         <constraint firstAttribute="height" constant="80" id="tYW-H2-zR6"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="2">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -334,7 +335,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="WTH-mw-TW3"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="eSu-f8-0mL"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="3">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -352,7 +353,7 @@
                                                         <constraint firstAttribute="width" constant="80" id="A63-qN-G3c"/>
                                                         <constraint firstAttribute="height" constant="80" id="PZ4-rC-Yrc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                                     <state key="normal" title="-">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -379,7 +380,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="6SM-k3-Cn3"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="YM4-FV-jAo"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="AC">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -397,7 +398,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="1pf-W2-jiq"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="ZuS-dl-GAR"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
                                                     <state key="normal" title="0">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -415,7 +416,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="6eW-q7-cnh"/>
                                                         <constraint firstAttribute="width" constant="80" id="IM8-NV-6qk"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                                     <state key="normal" title="+">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -433,7 +434,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="FD5-ss-ic6"/>
                                                         <constraint firstAttribute="height" constant="80" id="HxV-qN-Pk9"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                                     <state key="normal" title="=">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>

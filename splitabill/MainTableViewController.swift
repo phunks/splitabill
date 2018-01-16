@@ -22,7 +22,7 @@ class Member {
     }
 }
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, UIGestureRecognizerDelegate {
 
     // バリデート追加
     // ・数値チェック
@@ -76,6 +76,16 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        self.navigationController?.delegate = self as? UINavigationControllerDelegate
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(DetailTableViewController.didSwipe(_:)))
+        rightSwipe.direction = .right
+        view.addGestureRecognizer(rightSwipe)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(DetailTableViewController.didSwipe(_:)))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+        
         
         if tableData.count == 0 {
             tableData  = readHistory()[0]
@@ -85,6 +95,16 @@ class MainTableViewController: UITableViewController {
         }
     }
 
+    @objc func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        
+        if sender.direction == .right {
+            print("Right")
+        }
+        else if sender.direction == .left {
+            print("Left")
+        }
+    }
+    
     func addTapped() -> (Array<String>) {
         var resultData = [String]()
         var member = [Member]()

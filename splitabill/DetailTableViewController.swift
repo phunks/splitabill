@@ -181,6 +181,7 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
             } else if (priceString?.regexMatch(pattern: "\\."))! {
                 priceString = String(abs(Int((priceString?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
             }
+            priceString = String(abs(Int(priceString!)!) * -1)
         }
     }
 

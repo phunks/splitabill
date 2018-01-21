@@ -35,18 +35,17 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
     var rightValue    = ""
     var result        = ""
     var currentOperation:Operation = .NULL
+    var fieldEdit:Bool = false
     
 
     @IBOutlet weak var priceTextField: UILabel!
     
     @IBAction func numberPressed(_ sender: RoundButton) {
         if runningNumber.count <= 8 {
+            fieldEdit = true
             runningNumber += "\(sender.tag)"
             if runningNumber.count == 2 {
-                let regex:NSRegularExpression = try! NSRegularExpression(pattern: "^0", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, (runningNumber.count))
-                let modString = regex.stringByReplacingMatches(in: runningNumber, options: [], range: range, withTemplate: "")
-                runningNumber = modString
+                runningNumber = runningNumber.regexReplace(pattern: "^0", with: "")
             }
             priceTextField.text = runningNumber
         }
@@ -77,6 +76,7 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
     }
     
     func operation(operation: Operation) {
+        fieldEdit = false
         if currentOperation != .NULL && Double(leftValue) != nil {
             if runningNumber != "" {
                 rightValue = runningNumber
@@ -129,17 +129,23 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
             priceTextField.text     = "0"
         }
     }
-
+    
     @objc func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        
-        if sender.direction == .right {
-            print("Right")
-        }
-        else if sender.direction == .left {
-            print("Left")
+        if sender.direction == .left || sender.direction == .right {
             priceTextField.becomeFirstResponder()
-            //let price = priceTextField.text
-            //priceTextField.text = price?.prefix(through: str((price?.count)! - 1))
+            let price = priceTextField.text!
+            if fieldEdit == true {
+                if price.count > 1 {
+                    var txt:String = price.removeLastString()
+                    if txt.regexMatch(pattern: "\\.$") {
+                        txt = txt.regexReplace(pattern: "[^\\d]+$", with: "")
+                    }
+                    priceTextField.text = txt
+                } else {
+                    priceTextField.text = "0"
+                }
+                runningNumber = priceTextField.text!
+            }
         }
     }
     
@@ -168,10 +174,9 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
         if segue.identifier == "save" {
             dataString = editModelTextField.text
             let txt = priceTextField.text
-            let regex = try! NSRegularExpression(pattern: "\\..*", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, (txt?.count)!)
-            let modString = regex.stringByReplacingMatches(in: txt!, options: [], range: range, withTemplate: "")
-            priceString = String(abs(Int(modString)!) * -1)
+            
+            // 小数点以下切り捨て
+            priceString = String(abs(Int((txt?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
         }
     }
 

@@ -173,13 +173,13 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             dataString = editModelTextField.text
-            let txt = priceTextField.text
+            priceString = priceTextField.text
             
             // 小数点以下切り捨て
-            if (txt?.regexMatch(pattern: "e-"))! {
+            if (priceString?.regexMatch(pattern: "e-"))! {
                 priceString = "0"
-            } else if (txt?.regexMatch(pattern: "\\."))! {
-                priceString = String(abs(Int((txt?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
+            } else if (priceString?.regexMatch(pattern: "\\."))! {
+                priceString = String(abs(Int((priceString?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
             }
         }
     }

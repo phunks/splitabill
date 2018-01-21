@@ -176,7 +176,11 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
             let txt = priceTextField.text
             
             // 小数点以下切り捨て
-            priceString = String(abs(Int((txt?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
+            if (txt?.regexMatch(pattern: "e-"))! {
+                priceString = "0"
+            } else if (txt?.regexMatch(pattern: "\\."))! {
+                priceString = String(abs(Int((txt?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
+            }
         }
     }
 

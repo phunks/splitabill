@@ -1,9 +1,9 @@
 //
 //  DetailTableViewController.swift
-//  edit data demo
+//  split a bill
 //
-//  Created by Apoorv Mote on 04/10/15.
-//  Copyright © 2015 Apoorv Mote. All rights reserved.
+//  Created by kan manzawa on 2018/01/06.
+//  Copyright © 2018 kan manzawa. All rights reserved.
 //
 
 
@@ -29,10 +29,11 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
     var priceString:String?
     
     // calc
+    var displayValue  = ""
     var runningNumber = ""
-    var leftValue = ""
-    var rightValue = ""
-    var result = ""
+    var leftValue     = ""
+    var rightValue    = ""
+    var result        = ""
     var currentOperation:Operation = .NULL
     
 
@@ -41,14 +42,21 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
     @IBAction func numberPressed(_ sender: RoundButton) {
         if runningNumber.count <= 8 {
             runningNumber += "\(sender.tag)"
+            if runningNumber.count == 2 {
+                let regex:NSRegularExpression = try! NSRegularExpression(pattern: "^0", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, (runningNumber.count))
+                let modString = regex.stringByReplacingMatches(in: runningNumber, options: [], range: range, withTemplate: "")
+                runningNumber = modString
+            }
             priceTextField.text = runningNumber
         }
     }
     @IBAction func allClearPressed(_ sender: RoundButton) {
+        displayValue  = ""
         runningNumber = ""
-        leftValue = ""
-        rightValue = ""
-        result = ""
+        leftValue     = ""
+        rightValue    = ""
+        result        = ""
         currentOperation = .NULL
         priceTextField.text = "0"
     }
@@ -69,11 +77,10 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
     }
     
     func operation(operation: Operation) {
-        if currentOperation != .NULL {
+        if currentOperation != .NULL && Double(leftValue) != nil {
             if runningNumber != "" {
                 rightValue = runningNumber
                 runningNumber = ""
-                
                 if currentOperation == .Add {
                     result = "\(Double(leftValue)! + Double(rightValue)!)"
                 }else if currentOperation == .Subtract {

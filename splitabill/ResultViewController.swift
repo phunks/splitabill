@@ -1,9 +1,9 @@
 //
 //  ResultViewController.swift
-//  edit data demo
+//  split a bill
 //
-//  Created by pnk on 2018/01/06.
-//  Copyright © 2018 Apoorv Mote. All rights reserved.
+//  Created by kan manzawa on 2018/01/06.
+//  Copyright © 2018 kan manzawa. All rights reserved.
 //
 
 import UIKit

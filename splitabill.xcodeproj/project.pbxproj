@@ -48,7 +48,6 @@
 		05979C851BC1872D00F5EA5F = {
 			isa = PBXGroup;
 			children = (
-				86EB8DBC200E387D0020ECD5 /* resources */,
 				867D5D3D200BBFB200B1B069 /* Default-568h@2x.png */,
 				05979C901BC1872D00F5EA5F /* splitabill */,
 				05979C8F1BC1872D00F5EA5F /* Products */,
@@ -78,13 +77,6 @@
 				05979C9D1BC1872D00F5EA5F /* Info.plist */,
 			);
 			path = splitabill;
-			sourceTree = "<group>";
-		};
-		86EB8DBC200E387D0020ECD5 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

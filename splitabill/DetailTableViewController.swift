@@ -179,7 +179,7 @@ class DetailTableViewController: UITableViewController, UITextFieldDelegate, UIG
             if (priceString?.regexMatch(pattern: "e-"))! {
                 priceString = "0"
             } else if (priceString?.regexMatch(pattern: "\\."))! {
-                priceString = String(abs(Int((priceString?.regexReplace(pattern: "\\..*", with: ""))!)!) * -1)
+                priceString = String(abs(Int((priceString?.regexReplace(pattern: "\\..*", with: ""))!)!))
             }
             priceString = String(abs(Int(priceString!)!) * -1)
         }

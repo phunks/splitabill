@@ -98,10 +98,10 @@ class MainTableViewController: UITableViewController, UIGestureRecognizerDelegat
     @objc func didSwipe(_ sender: UISwipeGestureRecognizer) {
         
         if sender.direction == .right {
-            print("Right")
+            //print("Right")
         }
         else if sender.direction == .left {
-            print("Left")
+            //print("Left")
         }
     }
     
@@ -164,9 +164,18 @@ class MainTableViewController: UITableViewController, UIGestureRecognizerDelegat
             }
         }
         
-        resultData.append("支出合計: \(Swift.abs(sumVal).JPYString)、 一人あたり: \(Swift.abs(sumVal / mcnt).JPYString)、 端数: \((sumVal % mcnt).JPYString)")
+        let perPerson = Swift.abs(sumVal / mcnt)
+        resultData.append("支出合計: \(Swift.abs(sumVal).JPYString)、 一人あたり: \(perPerson.JPYString)、 端数: \((sumVal % mcnt).JPYString)")
         
         for s in member {
+            if perPerson < Swift.abs(s.pay) {
+                resultData.index(of: "もらう人")    == nil ? resultData.append("もらう人")    : nil
+            } else if perPerson > Swift.abs(s.pay) {
+                resultData.index(of: "払う人")      == nil ? resultData.append("払う人")     : nil
+            } else if perPerson == Swift.abs(s.pay) {
+                resultData.index(of: "プラマイゼロ") == nil ? resultData.append("プラマイゼロ") : nil
+            }
+            
             resultData.append(s.name + " " + s.pay.JPYString + " | " + s.log.joined(separator: " |"))
         }
         return resultData
